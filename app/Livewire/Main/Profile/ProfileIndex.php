@@ -33,12 +33,12 @@ class ProfileIndex extends Component
     }
     public function getAllPostProperty()
     {
-        return Post::with(['postImages'])->latest()->paginate(10);
+        return Post::byUserLogin()->with(['postImages'])->latest()->paginate(10);
     }
 
     public function getPostByLikeProperty()
     {
-        return Post::with(['postImages'])->withCount('postLikes')
+        return Post::byUserLogin()->with(['postImages'])->withCount('postLikes')
             ->orderByDesc('post_likes_count')
             ->limit(4)
             ->get();
@@ -46,7 +46,7 @@ class ProfileIndex extends Component
     public function showDataPost($id)
     {
         $this->renderDetailKey = rand(1, 1000);
-        $this->showPost = Post::with(['postImages', 'postLikes', 'postComments.user'])->find($id);
+        $this->showPost = Post::byUserLogin()->with(['postImages', 'postLikes', 'postComments.user'])->find($id);
     }
 
     public function saveLike()

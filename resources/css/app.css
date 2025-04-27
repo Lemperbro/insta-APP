@@ -241,6 +241,9 @@
 @utility page-heading {
   @apply text-2xl font-semibold text-[var(--fg-2)];
 }
+@utility post-title {
+  @apply text-lg font-semibold text-[var(--fg-2)];
+}
 @utility card {
   @apply bg-white dark:bg-[var(--bg-2)] p-4 rounded-lg border;
 }

@@ -15,6 +15,15 @@ Route::middleware('auth')->group(function () {
     Route::get('profile/{id}', \App\Livewire\Main\Profile\ProfileIndex::class)->name('profile');
 
     Route::get('post-form/{id?}', \App\Livewire\Main\PostForm\PostFormIndex::class)->name('post.form');
+
+    Route::get('beranda', \App\Livewire\Main\Beranda\BerandaIndex::class)->name('beranda');
+
+    Route::post('logout', function() {
+        auth()->logout();
+        session()->invalidate();
+        session()->regenerateToken();
+        return redirect()->route('auth.login');
+    })->name('logout');
 });
 
 
