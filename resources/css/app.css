@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import '../../vendor/tallstackui/tallstackui/css/v4.css'; 
+
 @plugin '@tailwindcss/forms'; 
  
 @source '../../vendor/tallstackui/tallstackui/**/*.php'; 
@@ -19,6 +20,8 @@
 */
 
 @theme {
+
+  --font-poppins: 'Poppins', sans-serif;
   
   --color-main-accent: #1a4d97;
  --color-accent-100: #e6eef9;
@@ -121,8 +124,8 @@
     
     --sidebar: var(--color-white);
     --sidebar-fg: oklch(0.145 0 0);
-    --sidebar-active-accent-bg: var(--color-main-accent);
-    --sidebar-active-accent-text: white;
+    --sidebar-active-accent-bg: var(--color-accent-100);
+    --sidebar-active-accent-text: var(--color-main-accent);
     --sidebar-hover-accent-bg: var(--color-accent-100);
     --sidebar-hover-accent-text: var(--color-main-accent);
     
@@ -176,8 +179,8 @@
     
     --sidebar: #1a1a1e;
     --sidebar-fg: oklch(0.985 0 0);
-    --sidebar-active-accent-bg: var(--color-main-accent);
-    --sidebar-active-accent-text: white;
+    --sidebar-active-accent-bg: rgba(26, 77, 151, 0.3);
+    --sidebar-active-accent-text: var(--color-accent-400);
     --sidebar-hover-accent-bg: var(--bg-3);
     --sidebar-hover-accent-text: var(--color-gray-300);
    
@@ -189,37 +192,45 @@
     --chart-4: oklch(0.845 0.143 164.978);
     --chart-5: oklch(0.905 0.093 164.15);
   }
-}
 
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    @apply !border-[var(--border)] !ring-[var(--border)] focus-within:!ring-[var(--ring)] focus-within:focus:ring-[var(--ring)] focus:ring-[var(--ring)];
-  }
-  h1,h2,h3,h4,h5,h6 {
-    @apply text-[var(--fg-2)];
-  }
-  p{
-    @apply text-[var(--fg-3)];
-  }
-  input[data-autocompleted] {
-    background-color: transparent !important;
-  }
-  input:-webkit-autofill,
-  input:-webkit-autofill:focus {
-      transition: background-color 0s 0s, color 0s 0s;
-      transition-delay: calc(infinity * 1s);
-  }
 
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+      @apply border-[var(--border)] ring-[var(--border)] focus-within:!ring-[var(--ring)] focus-within:focus:ring-[var(--ring)] focus:ring-[var(--ring)];
+    }
+    h1,h2,h3,h4,h5,h6 {
+      @apply text-[var(--fg-2)];
+    }
+    p{
+      @apply text-[var(--fg-3)];
+    }
+    input[data-autocompleted] {
+      background-color: transparent !important;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:focus {
+        transition: background-color 0s 0s, color 0s 0s;
+        transition-delay: calc(infinity * 1s);
+    }
+
+    .filepond--drop-label, .filepond--panel .filepond--panel-root{
+      @apply !bg-[var(--bg-1)] border !text-[var(--fg-3)] rounded-lg;
+    }
+
+    .modal-body {
+      overflow: visible !important;
+      overflow-y: auto !important;
+  }
 }
 
 
 
 @utility container {
-    @apply px-4 sm:px-[2.7rem] mx-auto;
+    @apply px-4 sm:px-[10rem] mx-auto;
 }
 @utility responsive-header{
   @apply flex items-center gap-2;
@@ -227,6 +238,13 @@
 @utility remove-btn {
   @apply  items-center justify-center rounded-md bg-red-200 dark:bg-red-200 border border-red-300 inline-flex text-red-600 cursor-pointer;
 }
+@utility page-heading {
+  @apply text-2xl font-semibold text-[var(--fg-2)];
+}
+@utility card {
+  @apply bg-white dark:bg-[var(--bg-2)] p-4 rounded-lg border;
+}
+
 
 
 

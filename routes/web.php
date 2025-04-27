@@ -1,53 +1,20 @@
 <?php
 
+use App\Enums\RoleEnum;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', \App\Livewire\Admin\Dashboard\DashboardIndex::class)->name('dashboard');
-Route::get('/table', \App\Livewire\Admin\Table\TableIndex::class)->name('table');
-Route::get('utils', \App\Livewire\Admin\Utils\UtilsIndex::class)->name('utils');
+Route::get('/', function () {
+    return redirect()->route('auth.login');
+});
+Route::prefix('auth')->middleware('guest')->name('auth.')->group(function () {
+    Route::get('login', \App\Livewire\Auth\LoginIndex::class)->name('login');
+    Route::get('register', \App\Livewire\Auth\RegisterIndex::class)->name('register');
+});
 
-Route::get('tests', function () {
-    $data = [
-        [
-            'id' => 1,
-            'name' => 'ryan'
-        ],
-        [
-            'id' => 3,
-            'name' => 'dani'
-        ],
-        [
-            'id' => 4,
-            'name' => 'dani'
-        ],
-        [
-            'id' => 5,
-            'name' => 'dani'
-        ],
-        [
-            'id' => 6,
-            'name' => 'dani'
-        ],
-        [
-            'id' => 7,
-            'name' => 'dani'
-        ],
-        [
-            'id' => 8,
-            'name' => 'dani'
-        ],
-        [
-            'id' => 9,
-            'name' => 'dani'
-        ],
-        [
-            'id' => 10,
-            'name' => 'dani'
-        ],
-        [
-            'id' => 11,
-            'name' => 'dani'
-        ]
-    ];
-    return response()->json($data);
-})->name('tests');
+Route::middleware('auth')->group(function () {
+    Route::get('profile/{id}', \App\Livewire\Main\Profile\ProfileIndex::class)->name('profile');
+
+    Route::get('post-form/{id?}', \App\Livewire\Main\PostForm\PostFormIndex::class)->name('post.form');
+});
+
+

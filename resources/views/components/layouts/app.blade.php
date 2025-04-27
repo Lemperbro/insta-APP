@@ -52,24 +52,39 @@
         }
     }" x-init="checkScreenSize(); window.addEventListener('resize', checkScreenSize)"
     x-bind:class="{ 'dark bg-[var(--main-bg)]': darkTheme, 'bg-gray-50': !darkTheme }">
-    <x-ts-toast /> 
-    <main>
-        <div class="flex">
-            <livewire:admin.partials.sidebar.sidebar-index />
-            <div class="fixed inset-0 bg-black/50 z-[79] lg:hidden transition-opacity duration-300"
-                x-show="!sidebarHidden && window.innerWidth < 1024" x-on:click="sidebarHidden = true">
+    <x-ts-toast />
+    <x-ts-dialog />
+
+    <div class="fixed top-0 left-0 right-0 h-16 bg-white z-40">
+        <div class="container h-full">
+            <div class="flex flex-col h-full justify-center">
+                <h1 class="font-semibold text-2xl">Insta <span class="text-lime-600">APP</span> </h1>
             </div>
-            <div class="w-full lg:ml-[300px] ml-0 content-transition" x-bind:class="{ 'content-full': sidebarHidden }">
-                <livewire:admin.partials.headers.header-index />
-                <main class="overflow-y-auto pt-20 max-w-full h-full">
-                    <div class="container overflow-hidden pt-2 pb-32 w-full min-h-screen">
-                        {{ $slot }}
-                    </div>
-                </main>
+        </div>
+    </div>
+
+    <main class="min-h-screen pb-36 pt-16">
+        {{ $slot }}
+        <div class="fixed bottom-10 bg-white border shadow-2xl rounded-xl  w-96 left-1/2 -translate-x-1/2">
+            <div class="grid grid-cols-3 gap-4 h-full p-2">
+                <div class="flex flex-col gap-2 items-center justify-center bg-gray-50 border rounded-lg p-2">
+                    <i class="ti ti-home text-2xl"></i>
+                    <span>Beranda</span>
+                </div>
+                <a href="{{ route('post.form') }}"
+                    class="flex flex-col gap-2 items-center justify-center bg-gray-50 border rounded-lg p-2">
+                    <i class="ti ti-plus text-2xl"></i>
+                    <span>Posting</span>
+                </a>
+                <div class="flex flex-col gap-2 items-center justify-center bg-gray-50 border rounded-lg p-2">
+                    <i class="ti ti-user text-2xl"></i>
+                    <span>Profile</span>
+                </div>
             </div>
         </div>
     </main>
     @livewireScripts
+    @filepondScripts
 </body>
 
 </html>
