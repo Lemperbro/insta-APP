@@ -20,9 +20,9 @@ class Post extends Model
     protected $guarded = ['id'];
 
     #[Scope]
-    protected function byUserLogin(Builder $query)
+    protected function byUser(Builder $query, $id)
     {
-        return $query->where('userable_id', Auth::user()->id);
+        return $query->where('userable_id', $id);
     }
 
     public function userable()

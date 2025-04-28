@@ -78,9 +78,11 @@
 
 
                 <div class="py-2 justify-end flex">
-                    <x-buttons.button iconClass="ti ti-trash" color="danger" wire:click="deletePost('{{ $showPost?->id }}')" target="deletePost">
-                        Hapus Postingan
-                    </x-buttons.button>
+                @if ($showPost?->userable_id == Auth::user()->id) 
+                        <x-buttons.button iconClass="ti ti-trash" color="danger" wire:click="deletePost('{{ $showPost?->id }}')" target="deletePost">
+                            Hapus Postingan
+                        </x-buttons.button>
+                @endif
                 </div>
         @endif
     </x-ts-modal>
