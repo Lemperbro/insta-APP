@@ -8,7 +8,7 @@
                         <label class="block text-sm font-semibold text-gray-600 dark:text-dark-400">Foto</label>
                         <span class="font-bold not-italic text-red-500">*</span>
                     </div>
-                    <x-filepond::upload wire:model="images" multiple />
+                    <x-filepond::upload wire:model="images" max-files="5" multiple />
                 </div>
                 <x-ts-input label="Judul *" wire:model="title" />
                 <x-ts-textarea label="Kontent *" wire:model="content" />
@@ -17,7 +17,8 @@
                 <x-buttons.button color="default" iconClass="ti ti-x text-lg" class="gap-2">
                     Batal
                 </x-buttons.button>
-                <x-buttons.button type="submit" target="updateOrCreate" color="primary" iconClass="ti ti-device-floppy text-lg" class="gap-2">
+                <x-buttons.button type="submit" target="updateOrCreate" color="primary"
+                    iconClass="ti ti-device-floppy text-lg" class="gap-2">
                     Simpan
                 </x-buttons.button>
             </div>

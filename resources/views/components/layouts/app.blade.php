@@ -82,7 +82,7 @@
 
     <main class="min-h-screen pb-36 pt-16">
         {{ $slot }}
-        <div class="fixed bottom-10 bg-white border shadow-2xl rounded-xl  w-96 left-1/2 -translate-x-1/2">
+        <div class="fixed bottom-10 bg-white border shadow-2xl rounded-xl  w-96 left-1/2 -translate-x-1/2 z-20">
             <div class="grid grid-cols-3 gap-4 h-full p-2">
                 <a href="{{ route('beranda') }}"
                     class="flex flex-col gap-2 items-center justify-center  {{ request()->routeIs('beranda') ? 'bg-lime-100 text-lime-600' : 'bg-gray-50' }} border rounded-lg p-2">

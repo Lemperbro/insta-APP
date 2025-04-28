@@ -21,6 +21,34 @@ class UserSeeder extends Seeder
                 'password' => '12345678',
                 'phone_number' => '082230736205',
                 'role' => RoleEnum::USER->value,
+            ],
+            [
+                'name' => 'John Doe',
+                'email' => 'johndoe@example.com',
+                'password' => '12345678',
+                'phone_number' => '081234567890',
+                'role' => RoleEnum::USER->value,
+            ],
+            [
+                'name' => 'Jane Smith',
+                'email' => 'janesmith@example.com', 
+                'password' => '12345678',
+                'phone_number' => '081234567891',
+                'role' => RoleEnum::USER->value,
+            ],
+            [
+                'name' => 'Mike Johnson',
+                'email' => 'mikejohnson@example.com',
+                'password' => '12345678', 
+                'phone_number' => '081234567892',
+                'role' => RoleEnum::USER->value,
+            ],
+            [
+                'name' => 'Sarah Williams',
+                'email' => 'sarahwilliams@example.com',
+                'password' => '12345678',
+                'phone_number' => '081234567893',
+                'role' => RoleEnum::USER->value,
             ]
         ];
 

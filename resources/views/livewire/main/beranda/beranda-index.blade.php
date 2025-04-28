@@ -9,7 +9,7 @@
                                 <div class="">
                                     <a href="{{ route('profile', ['id' => $item?->userable_id]) }}"
                                         class="py-4 flex items-center gap-2 cursor-pointer">
-                                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile"
+                                        <img src="{{ $item?->userable?->fp ? Storage::url($item?->userable?->fp) : 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }}" alt="Profile"
                                             class="w-10 h-10 rounded-full object-cover">
                                         <div class="flex flex-col">
                                             <h1 class="font-semibold">{{ $item?->userable?->name }}</h1>
@@ -42,7 +42,8 @@
                                         </div>
 
                                         <div class="mt-4 pb-10 border-b-[1px]">
-                                            <h1 class="post-title">{{ $item?->title }}</h1>
+                                            <p class="text-xs text-gray-500">{{ formatDate($item?->created_at, 'D MMMM YYYY HH:mm') }}</p>
+                                            <h1 class="post-title mt-2">{{ $item?->title }}</h1>
                                             <p class="text-sm text-gray-500">{{ $item?->content }}</p>
                                         </div>
                                     </div>

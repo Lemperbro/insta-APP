@@ -37,10 +37,7 @@ class UserService implements UserInterface
             
             Auth::login($user, $remember);
             return $user;
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
-            throw $e;
-        } catch (HandledException $e) {
+        } catch (Exception | HandledException $e) {
             Log::error($e->getMessage());
             throw $e;
         }

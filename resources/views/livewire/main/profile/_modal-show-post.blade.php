@@ -51,14 +51,16 @@
                                         <div class="w-7 h-7 flex items-center justify-center rounded-full bg-gray-200">
                                             <i class="ti ti-user text-xl"></i>
                                         </div>
-                                        <h1 class="text-sm font-semibold ">{{ $comment?->user?->name }} 
+                                        <h1 class="text-sm font-semibold ">{{ $comment?->user?->name }}
                                             @if ($comment?->user_id == $showPost?->userable_id)
-                                                <span class="bg-lime-200 text-lime-600 px-2 py-1 rounded-lg text-xs font-normal">Author</span>
+                                                <span
+                                                    class="bg-lime-200 text-lime-600 px-2 py-1 rounded-lg text-xs font-normal">Author</span>
                                             @endif
                                         </h1>
                                     </div>
                                     <p class="text-sm text-gray-500">{{ $comment?->content }}</p>
-                                    <span class="text-sm text-gray-500">{{ formatDate($comment?->created_at, 'D MMMM YYYY HH:mm') }}</span>
+                                    <span
+                                        class="text-sm text-gray-500">{{ formatDate($comment?->created_at, 'D MMMM YYYY HH:mm') }}</span>
                                 </div>
 
                             @endforeach
@@ -74,6 +76,12 @@
                     </form>
                 </div>
 
+
+                <div class="py-2 justify-end flex">
+                    <x-buttons.button iconClass="ti ti-trash" color="danger" wire:click="deletePost('{{ $showPost?->id }}')" target="deletePost">
+                        Hapus Postingan
+                    </x-buttons.button>
+                </div>
         @endif
     </x-ts-modal>
 </div>

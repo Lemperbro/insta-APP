@@ -1,19 +1,24 @@
 <div>
+
     @include('livewire.main.profile._modal-show-post')
+    @include('livewire.main.profile._canvas-edit-profile')
     <div class="container">
         <div class=" mx-auto  p-8 bg-white min-h-screen shadow">
 
             <div class="flex items-center space-x-8">
 
                 <div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile"
-                        class="w-32 h-32 rounded-full object-cover">
+                    <img src="{{ $user?->fp ? Storage::url($user?->fp) : 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }}"
+                        alt="Profile" class="w-32 h-32 rounded-full object-cover">
                 </div>
 
                 <div class="flex-1">
                     <div class="flex items-center space-x-4">
                         <h2 class="text-2xl font-semibold">{{ $user?->name }}</h2>
-                        <button class="px-4 py-1 text-sm font-semibold border rounded">Edit Profile</button>
+                        @if (Auth::user()->id == $user?->id)
+                            <button class="px-4 py-1 text-sm font-semibold border rounded cursor-pointer"
+                                x-on:click="$slideOpen('change-profile')" wire:click="loadProfileForm">Edit Profile</button>
+                        @endif
                     </div>
                     <div class="flex space-x-6 mt-4">
                         <div><span class="font-semibold">{{ $allPost->total() }}</span> posts</div>

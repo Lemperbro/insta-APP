@@ -45,11 +45,9 @@ class LoginIndex extends Component
         try {
             $user = $this->userService->login(identifier: $this->email, credential: $this->password, remember: $this->remember);
             $this->redirect(route('profile', ['id' => $user?->id]));
-        } catch (Exception $e) {
+        } catch (Exception | HandledException $e) {
             Log::error($e->getMessage());
-            $this->toast()->error('Gagal', 'Terjadi Kesalahan Saat Login')->send();
-        } catch (HandledException $e) {
-            $this->toast()->error('Gagal', $e->getMessage())->send();
+            $this->toast()->error('Gagal', $e instanceof HandledException ? $e->getMessage() : 'Terjadi Kesalahan Saat Login')->send();
         }
     }
 }

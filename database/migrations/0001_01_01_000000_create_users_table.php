@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone_number', 50);
+            $table->text('fp')->nullable();
             $table->enum('status', array_column(UserStatusEnum::cases(), 'value'))->default(UserStatusEnum::ACTIVE->value);
             $table->string('fcm_token')->nullable();
             $table->string('fcm_web_token')->nullable();
