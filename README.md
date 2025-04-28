@@ -39,8 +39,8 @@ Starter kit ini dikembangkan menggunakan teknologi modern:
 
 #### 1. Clone project dari repository
 ```bash 
-git clone https://github.com/Lemperbro/starter-kit-laravel-livewire-tailwind.git
-cd starter-kit-laravel-livewire-tailwind
+git clone https://github.com/Lemperbro/insta-APP.git
+cd insta-APP
 ```
 
 #### 2. Install dependensi PHP
